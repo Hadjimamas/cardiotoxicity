@@ -138,7 +138,6 @@ class User {
   }
 }
 
-
 class GetAllergy {
   final String? name;
 

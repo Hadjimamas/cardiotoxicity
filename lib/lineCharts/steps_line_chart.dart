@@ -54,7 +54,9 @@ class StepsLineChartState extends State<StepsLineChart> {
                   //Setting the axes of my graph
                   //X -> Date || Y -> Steps
                   dataSource: chartData,
-                  xValueMapper: (dynamic year, _) => year['startTime'],
+                  xValueMapper: (dynamic year, _) =>
+                      //Getting only the first 10 characters from the startTime String which is the date(including spaces)
+                      year['startTime'].toString().substring(0, 10),
                   yValueMapper: (dynamic year, _) => year['steps'],
                   name: 'Steps',
                   dataLabelSettings: const DataLabelSettings(isVisible: true))
