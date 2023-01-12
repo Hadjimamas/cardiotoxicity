@@ -8,7 +8,10 @@ import 'educationalMaterial.dart';
 import 'lineCharts/heartBeat_line_chart.dart';
 
 class MainDrawer extends StatelessWidget {
-  const MainDrawer({Key? key}) : super(key: key);
+  final String username, password;
+
+  const MainDrawer({Key? key, required this.username, required this.password})
+      : super(key: key);
 
   //Declaring a ListTile to use it on the menu items
   Widget buildListTile(String title, IconData icon, BuildContext context,
@@ -68,8 +71,8 @@ class MainDrawer extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          buildListTile(
-              "Demographics", Icons.settings, context, (context) => UserData()),
+          buildListTile("Demographics", Icons.settings, context,
+              (context) => UserData(username: username, password: password)),
           SizedBox(
             height: 10,
           ),

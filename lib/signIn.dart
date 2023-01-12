@@ -79,7 +79,11 @@ class SignInPageState extends State<SignInPage> {
                   _formKey.currentState!.save();
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const HomePage()),
+                    MaterialPageRoute(
+                        builder: (context) => HomePage(
+                              username: userController.text,
+                              password: passController.text,
+                            )),
                   );
                   //Displaying a SnackBar to verify the user that logged in
                   ScaffoldMessenger.of(context).showSnackBar(

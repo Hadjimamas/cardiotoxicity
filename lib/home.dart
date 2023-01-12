@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, no_logic_in_create_state
 
 import 'dart:convert';
 
@@ -14,13 +14,19 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:intl/intl.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final String username, password;
+
+  const HomePage({super.key, required this.username, required this.password});
 
   @override
-  HomePageState createState() => HomePageState();
+  HomePageState createState() => HomePageState(username, password);
 }
 
 class HomePageState extends State<HomePage> {
+  String username, password;
+
+  HomePageState(this.username, this.password);
+
   late Future<QuoteModel> futureQuote;
   List caloriesItems = [];
   List heartRateItems = [];
@@ -66,9 +72,12 @@ class HomePageState extends State<HomePage> {
     var f = NumberFormat("###.0##");
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Hello'),
+        title: Text('Hello $username'),
       ),
-      drawer: const MainDrawer(),
+      drawer: MainDrawer(
+        username: username,
+        password: password,
+      ),
       body: StaggeredGrid.count(
         crossAxisCount: 4,
         mainAxisSpacing: 4,
@@ -308,7 +317,10 @@ class HomePageState extends State<HomePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const UserData()),
+                              builder: (context) => UserData(
+                                    username: username,
+                                    password: password,
+                                  )),
                         );
                       },
                       icon: const Icon(Icons.settings, color: Colors.white),
