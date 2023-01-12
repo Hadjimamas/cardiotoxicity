@@ -20,7 +20,9 @@ class UserDataState extends State<UserData> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text('Profile'),
+      ),
       body: FutureBuilder(
         //Here you have to pass your username and password to display the user data
         future: DBHelper.fetchUser(password, username),
