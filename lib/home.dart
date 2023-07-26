@@ -84,42 +84,40 @@ class HomePageState extends State<HomePage> {
         crossAxisSpacing: 4,
         children: [
           StaggeredGridTile.count(
-              crossAxisCellCount: 4,
-              mainAxisCellCount: 1,
-              child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  color: Colors.purpleAccent,
-                  child: Column(
-                    children: [
-                      const Text(
-                        'Quote of the Day',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 25),
-                      ),
-                      FutureBuilder<QuoteModel>(
-                        future: futureQuote,
-                        builder: (context, snapshot) {
-                          if (snapshot.hasData) {
-                            String? quote = snapshot.data!.slip!.advice ??
-                                'Advice of the day';
-                            return Text(quote,
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(fontSize: 15));
-                          } else if (snapshot.hasError) {
-                            return Text('${snapshot.error}');
-                          }
-                          // By default, show a loading spinner.
-                          return const CircularProgressIndicator(
-                            strokeWidth: 2,
-                          );
-                        },
-                      ),
-                    ],
-                  ))
-              //Tile(index: 0),
+            crossAxisCellCount: 4,
+            mainAxisCellCount: 1,
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
               ),
+              color: Colors.purpleAccent,
+              child: Column(
+                children: [
+                  const Text(
+                    'Quote of the Day',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 25),
+                  ),
+                  FutureBuilder<QuoteModel>(
+                    future: futureQuote,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        String? quote =
+                            snapshot.data!.slip!.advice ?? 'Advice of the day';
+                        return Text(quote,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(fontSize: 15));
+                      } else if (snapshot.hasError) {
+                        return Text('${snapshot.error}');
+                      }
+                      // By default, show a loading spinner.
+                      return const CircularProgressIndicator(strokeWidth: 2);
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
           StaggeredGridTile.count(
               crossAxisCellCount: 2,
               mainAxisCellCount: 4,
@@ -136,9 +134,7 @@ class HomePageState extends State<HomePage> {
                       style: TextStyle(fontSize: 25, color: Colors.deepPurple),
                       textAlign: TextAlign.center,
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                    const SizedBox(height: 10),
                     Container(
                       decoration: BoxDecoration(
                           color: Colors.pinkAccent,
@@ -187,9 +183,9 @@ class HomePageState extends State<HomePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
+                        children: [
                           Icon(Icons.monitor_heart, color: Colors.white),
                           Text(
                             'Walk',
@@ -208,9 +204,9 @@ class HomePageState extends State<HomePage> {
                           const Text('steps', style: TextStyle(fontSize: 20))
                         ],
                       ),
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.end,
-                        children: const [
+                        children: [
                           Icon(
                             Icons.system_security_update_good,
                             color: Colors.white,
@@ -249,9 +245,9 @@ class HomePageState extends State<HomePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
+                        children: [
                           Icon(Icons.monitor_heart, color: Colors.white),
                           Text(
                             'HeartBeat',
@@ -268,13 +264,10 @@ class HomePageState extends State<HomePage> {
                           const Text('bpm', style: TextStyle(fontSize: 20))
                         ],
                       ),
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.end,
-                        children: const [
-                          Icon(
-                            Icons.watch,
-                            color: Colors.white,
-                          ),
+                        children: [
+                          Icon(Icons.watch, color: Colors.white),
                           Text(
                             'Watch',
                             style: TextStyle(color: Colors.white),
@@ -317,10 +310,11 @@ class HomePageState extends State<HomePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => UserData(
-                                    username: username,
-                                    password: password,
-                                  )),
+                            builder: (context) => UserData(
+                              username: username,
+                              password: password,
+                            ),
+                          ),
                         );
                       },
                       icon: const Icon(Icons.settings, color: Colors.white),
@@ -351,9 +345,7 @@ class HomePageState extends State<HomePage> {
                   Container(
                     decoration: BoxDecoration(
                         color: Colors.lightBlueAccent,
-                        border: Border.all(
-                          color: Colors.white,
-                        ),
+                        border: Border.all(color: Colors.white),
                         borderRadius:
                             const BorderRadius.all(Radius.circular(20))),
                     child: IconButton(

@@ -4,18 +4,19 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.18.4 <3.0.0'
+  sdk: '>=3.0.0 <4.0.0'
 dependencies:
   flutter:
     sdk: flutter
-  intl: ^0.17.0
-  cupertino_icons: ^1.0.2
-  sqflite: ^2.2.2
-  syncfusion_flutter_charts: ^20.4.42
-  path_provider: ^2.0.11
+  intl: ^0.18.0
+  cupertino_icons: ^1.0.5
+  sqflite: ^2.2.8+2
+  syncfusion_flutter_charts: ^21.2.4
+  path: any
+  path_provider: ^2.0.15
   sparkline: ^1.0.0
   flutter_staggered_grid_view: ^0.6.2
-  http: ^0.13.5
+  http: ^0.13.6
 
 dev_dependencies:
   flutter_test:
